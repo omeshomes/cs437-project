@@ -1,23 +1,24 @@
 import os
+import datetime
 from flask import Flask, jsonify, render_template, request
 
-
 from server.models import db
+import server.models as models
 
 def create_app():
     app = Flask(__name__)
-    # app.secret_key = os.urandom(24)
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ['DATABASE_URL']
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    @app.route('/')
-    def hello():
-        return "Hello World!"
+    @app.route("/weather/<date>")
+    def weather(date):
+        """Returns Harvard and Yale's weather for given date"""
+        weather_list = models.Weather.query.filter(models.Weather.date == date).all()
 
-
-    @app.route('/<name>')
-    def hello_name(name):
-        return "Hello {}!".format(name)
+        result = {}
+        for weather_point in weather_list:
+            result[weather_point.school.name] = weather_point.to_json()
+        return result
 
     return app
 

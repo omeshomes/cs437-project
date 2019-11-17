@@ -32,3 +32,21 @@ class Weather(db.Model):
     has_thunder = db.Column(db.Boolean, nullable=True)  #03
     has_smoke = db.Column(db.Boolean, nullable=True)  #08
 
+    def to_json(self):
+        res = {
+            "average_wind_speed": str(self.average_wind_speed),
+            "peak_gust_time": str(self.peak_gust_time),
+            "precipitation": str(self.precipitation),
+            "max_temp": str(self.max_temp),
+            "min_temp": str(self.min_temp),
+            "WDF2": str(self.WDF2),
+            "WDF5": str(self.WDF5),
+            "WSF2": str(self.WSF2),
+            "WSF5": str(self.WSF5),
+            "has_fog": self.has_fog,
+            "has_heavy_fog": self.has_heavy_fog,
+            "has_thunder": self.has_thunder,
+            "has_smoke": self.has_smoke,
+        }
+        return res
+
