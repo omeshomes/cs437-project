@@ -1,0 +1,8 @@
+{
+  "name": "cs437-project",
+  "scripts": {
+    "start": "npm run frontend",
+    "postinstall": "cd frontend && npm install",
+    "frontend": "node scripts/start-frontend"
+  }
+}
