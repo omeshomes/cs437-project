@@ -1,6 +1,7 @@
 import os
 import datetime
 from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS
 
 from server.models import db
 import server.models as models
@@ -23,6 +24,7 @@ def create_app():
     return app
 
 app = create_app()
+CORS(app)
 db.app = app
 db.init_app(app)
 db.create_all()

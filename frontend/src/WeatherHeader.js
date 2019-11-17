@@ -1,14 +1,30 @@
 import React, {useState} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 //import './App.css';
 
-function WeatherHeader() {
+function WeatherHeader(props) {
     const [year,setYear] = useState(null);
     const [month,setMonth] = useState(null);
     const [day,setDay] = useState(null);
+
+    const monthToInt = {
+        "January": "01",
+        "February": "02",
+        "March": "03",
+        "April": "04",
+        "May": "05",
+        "June": "06",
+        "July": "07",
+        "August": "08",
+        "September": "09",
+        "October": "10",
+        "November": "11",
+        "December": "12"
+    }
 
     const dayOptions = [<option selected>Day...</option>];
 
@@ -16,10 +32,25 @@ function WeatherHeader() {
         dayOptions.push(<option key={i+1} value={i+1}>{i + 1}</option>);
     }
 
+    const handleSubmit = async event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/weather/${year}-${monthToInt[month]}-${day}`);
+            const resObject = await response.json();
+            console.log('response json', resObject)
+            props.setWeatherData(resObject)
+        } catch (e) {
+            console.log("Got error: ",  e);
+        }
+
+    }
+
     return (
         <Navbar className='navbar'>
             <Navbar.Brand> Weather Wars </Navbar.Brand>
-            <Form inline>
+            <Form inline onSubmit={handleSubmit}>
                 <InputGroup>
                     <FormControl
                         as="select"
@@ -77,6 +108,9 @@ function WeatherHeader() {
                         <option value='31'>31</option>}
                     </FormControl>
                 </InputGroup>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
             </Form>
         </Navbar>
     );
