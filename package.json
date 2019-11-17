@@ -1,8 +1,10 @@
 {
   "name": "cs437-project",
   "scripts": {
-    "start": "npm run frontend",
+    "start": "npm run backend && npm run frontend",
     "postinstall": "cd frontend && npm install",
-    "frontend": "node scripts/start-frontend"
+    "frontend": "node scripts/start-frontend",
+    "load-data": "pipenv install && pipenv run python -m server.populate_db",
+    "backend": "export FLASK_APP=server/app.py && pipenv run python -m flask run"
   }
 }
