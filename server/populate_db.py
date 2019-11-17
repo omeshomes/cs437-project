@@ -32,7 +32,6 @@ def add_school_weather(school_name, file_path):
         )
         db.session.add(weather_point)
 
-    print('HERE')
     db.session.commit()
 
 
