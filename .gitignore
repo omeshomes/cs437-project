@@ -1,1 +1,2 @@
-.idea*
+.idea/*
+server/__pycache_/_*
