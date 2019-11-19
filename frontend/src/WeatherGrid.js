@@ -9,17 +9,32 @@ import '@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css';
 
 function WeatherGrid(props) {
 
-  const {rowData} = props;
+  const {data} = props;
 
+  const attributeToText = {
+    "WDF2": 'Fastest 2 Minute Wind (degrees)',
+    "WDF5": 'Fastest 5 Minute Wind (degrees)',
+    "WSF2": 'Fastest 2 Minute Wind (m^-1/sec)',
+    "WSF5": 'Fastest 5 Minute Wind (m^-1/sec)',
+    "average_wind_speed": "Average Wind Speed",
+    "has_fog": 'Fog',
+    "has_heavy_fog": 'Heavy Fog',
+    "has_smoke": 'Smoke',
+    "has_thunder": 'Thunder',
+    "max_temp": 'Max Temperature',
+    "min_temp": 'Min Temperature',
+    "peak_gust_time": 'Peak Gust Time',
+    "precipitation": 'Precipitation'
+  }
 
   const [columnDefs ] = useState(
     [
       {
         headerName: "Attribute Name", field: "attribute"
       }, {
-        headerName: "Yale", field: "yale"
+        headerName: "Yale", field: "Yale"
       }, {
-        headerName: "Harvard", field: "harvard"
+        headerName: "Harvard", field: "Harvard"
       }
     ]
   );
@@ -30,13 +45,22 @@ function WeatherGrid(props) {
 
 
   const fixDataShape = (data) => {
-    if(!data) return [];
+    let rowData = [];
+    if(Object.keys(data).length === 0) return rowData;
 
-    const schools = Object.keys(data)
+    const schools = Object.keys(data);
+    const attributes = Object.keys(data[schools[0]]);
 
-    for(let i = 0; i < Object.keys(data[schools[0]]).length; i++) {
-
+    for(let i = 0; i < attributes.length; i++) {
+      let temp = {};
+      temp['attribute'] = attributeToText[attributes[i]]
+      for(let j=0; j < schools.length; j++) {
+        temp[schools[j]] = data[schools[j]][attributes[i]];
+      }
+      rowData.push(temp);
     }
+
+    return rowData;
   }
 
 
@@ -46,7 +70,7 @@ function WeatherGrid(props) {
       >
         <AgGridReact
           columnDefs={columnDefs}
-          rowData={fixDataShape(rowData)}
+          rowData={fixDataShape(data)}
           modules={AllCommunityModules}
           onGridReady={onGridReady}>
         </AgGridReact>

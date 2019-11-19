@@ -26,7 +26,7 @@ function WeatherHeader(props) {
         "December": "12"
     }
 
-    const dayOptions = [<option selected>Day...</option>];
+    const dayOptions = [];
 
     for( let i = 0; i < 28; i++) {
         dayOptions.push(<option key={i+1} value={i+1}>{i + 1}</option>);
@@ -44,7 +44,6 @@ function WeatherHeader(props) {
         } catch (e) {
             console.log("Got error: ",  e);
         }
-
     }
 
     return (
@@ -54,9 +53,9 @@ function WeatherHeader(props) {
                 <InputGroup>
                     <FormControl
                         as="select"
+                        defaultValue='Year...'
                         onChange={(event) => setYear(event.target.value)}
                     >
-                        <option selected>Year...</option>
                         <option value='2010'>2010</option>
                         <option value='2011'>2011</option>
                         <option value='2012'>2012</option>
@@ -72,9 +71,9 @@ function WeatherHeader(props) {
                 <InputGroup>
                 <FormControl
                         as="select"
+                        defaultValue='Month...'
                         onChange={(event) => setMonth(event.target.value)}
                     >
-                        <option selected>Month...</option>
                         <option value='January'>January</option>
                         <option value='February'>February</option>
                         <option value='March'>March</option>
@@ -94,21 +93,22 @@ function WeatherHeader(props) {
                 >
                 <FormControl
                         as="select"
+                        defaultValue='Day...'
                         disabled={month === null }
                         onChange={(event) => {setDay(event.target.value)}}
                     >
                         {dayOptions}
                         {month !== 'February' &&
-                            [<option value='29'>29</option>,
-                            <option value='30'>30</option>
+                            [<option key={29} value='29'>29</option>,
+                            <option key={30} value='30'>30</option>
                             ]
                         }
                         {!(month === 'September' || month === 'April' || month === 'June' || month === 'November') && 
                         (month !== 'February') &&
-                        <option value='31'>31</option>}
+                        <option key={31} value='31'>31</option>}
                     </FormControl>
                 </InputGroup>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" onChange={handleSubmit} type="submit">
                     Submit
                 </Button>
             </Form>
