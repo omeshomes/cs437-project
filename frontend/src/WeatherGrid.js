@@ -35,6 +35,8 @@ function WeatherGrid(props) {
         headerName: "Yale", field: "Yale"
       }, {
         headerName: "Harvard", field: "Harvard"
+      }, {
+        headerName: 'Who Won?', field: 'winner'
       }
     ]
   );
@@ -57,6 +59,7 @@ function WeatherGrid(props) {
       for(let j=0; j < schools.length; j++) {
         temp[schools[j]] = data[schools[j]][attributes[i]];
       }
+      temp['winner'] = 'Yale'
       rowData.push(temp);
     }
 
