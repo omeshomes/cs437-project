@@ -53,7 +53,6 @@ function WeatherHeader(props) {
                 <InputGroup>
                     <FormControl
                         as="select"
-                        defaultValue='Year...'
                         onChange={(event) => setYear(event.target.value)}
                     >
                         <option value='2010'>2010</option>
@@ -71,7 +70,6 @@ function WeatherHeader(props) {
                 <InputGroup>
                 <FormControl
                         as="select"
-                        defaultValue='Month...'
                         onChange={(event) => setMonth(event.target.value)}
                     >
                         <option value='January'>January</option>
@@ -93,7 +91,6 @@ function WeatherHeader(props) {
                 >
                 <FormControl
                         as="select"
-                        defaultValue='Day...'
                         disabled={month === null }
                         onChange={(event) => {setDay(event.target.value)}}
                     >
@@ -108,7 +105,7 @@ function WeatherHeader(props) {
                         <option key={31} value='31'>31</option>}
                     </FormControl>
                 </InputGroup>
-                <Button variant="primary" onChange={handleSubmit} type="submit">
+                <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
