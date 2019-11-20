@@ -105,7 +105,7 @@ function WeatherHeader(props) {
                         <option key={31} value='31'>31</option>}
                     </FormControl>
                 </InputGroup>
-                <Button variant="primary" type="submit">
+                <Button disabled={year===null || month===null || day===null } variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

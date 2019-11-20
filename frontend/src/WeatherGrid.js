@@ -59,11 +59,60 @@ function WeatherGrid(props) {
       for(let j=0; j < schools.length; j++) {
         temp[schools[j]] = data[schools[j]][attributes[i]];
       }
-      temp['winner'] = 'Yale'
       rowData.push(temp);
     }
 
-    return rowData;
+    const newData = rowData.map( (row) => {
+      let newRow = Object.assign({},row);
+      switch(row.attribute) {
+        case 'Fastest 2 Minute Wind (degrees)':
+        case 'Fastest 5 Minute Wind (degrees)':
+        case 'Fastest 2 Minute Wind (m^-1/sec)':
+        case 'Fastest 5 Minute Wind (m^-1/sec)':
+        case 'Precipitation':
+        case 'Peak Gust Time':
+        case 'Average Wind Speed':
+          if(parseFloat(row['Yale']) <= parseFloat(row['Harvard'])){
+            newRow['winner'] = 'Yale';
+          }
+          else {
+            newRow['winner'] = 'Harvard';
+          }
+          break;
+        case 'Max Temperature':
+        case 'Min Temperature':
+          if(Math.abs(parseFloat(row['Yale']) - 70) <= Math.abs(parseFloat(row['Harvard']) - 70)) {
+            newRow['winner'] = 'Yale';
+          }
+          else {
+            newRow['winner'] = 'Harvard';
+          }
+          break;
+        case 'Smoke':
+        case 'Thunder':
+        case 'Fog':
+        case 'Heavy Fog':
+          if(row['Yale'] === 'false') {
+            newRow['winner'] = 'Yale';
+          }
+          else if(row['Yale'] === 'true' && row['Harvard'] === 'true') {
+            newRow['winner'] = 'Yale';
+          }
+          else {
+            newRow['winner'] = 'Harvard';
+          }
+          break;
+        default:
+          newRow['winner'] = 'Yale';
+      }
+
+      return newRow;
+    })
+
+
+
+
+    return newData;
   }
 
 
