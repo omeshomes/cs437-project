@@ -10,6 +10,12 @@ import CollegeGrid from './CollegeGrid';
 function App() {
   const [weatherData, setWeatherData] = useState({})
 
+  const dummytable = [];
+
+  for (let i = 1; i < 366; i++) {
+    dummytable.push({day: i,school: (i % 3 === 0 ) ? "Havard" : "Yale"});
+  } 
+
   return (
     <div className='App-outside'>
       <div 
@@ -18,7 +24,9 @@ function App() {
         <CollegeGrid />
         <WeatherHeader setWeatherData={setWeatherData}/>
         <WeatherGrid data={weatherData} />
-        <YearLongGrid />
+        <YearLongGrid 
+          winnerData={dummytable}
+        />
       </div>
     </div>
   );
