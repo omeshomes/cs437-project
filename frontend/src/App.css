@@ -73,3 +73,12 @@
   width: 100%;
 }
 
+.winner-bar {
+  display: flex;
+  /* background: red; */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+}
+
