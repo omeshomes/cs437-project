@@ -73,7 +73,6 @@ def create_app():
         yale_scores = [0]
         h_count = harvard_list.count()
         y_count = yale_list.count()
-        print('here', h_count, y_count)
         for i in range(min(h_count, y_count)):
             h_day = harvard_list[i]
             y_day = yale_list[i]

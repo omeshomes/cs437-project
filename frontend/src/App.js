@@ -56,8 +56,9 @@ function App() {
         <YearLongGrid 
           winnerData={yearLongData}
         />
-        {/*<Footer/>*/}
+
       </div>
+      <Footer/>
     </div>
   );
 }

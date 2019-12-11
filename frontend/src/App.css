@@ -46,7 +46,8 @@
   font-size: 100%;
   font-style: italic;
   height: 50px;
-  position: absolute bottom;
+  /*position: absolute;*/
+  /*bottom: 0;*/
 }
 
 .profile{
