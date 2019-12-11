@@ -9,6 +9,8 @@ import '@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css';
 
 function WeatherGrid(props) {
 
+
+  const [winner, setWinner] = useState('nobody');
   const {data} = props;
 
   const attributeToText = {
@@ -27,7 +29,7 @@ function WeatherGrid(props) {
     "precipitation": 'Precipitation'
   }
 
-  const [columnDefs ] = useState(
+  const [columnDefs] = useState(
     [
       {
         headerName: "Attribute Name", field: "attribute"
@@ -107,15 +109,30 @@ function WeatherGrid(props) {
       }
 
       return newRow;
-    })
+    });
+
+
+    let counter = 0;
+    for (let index = 0; index < newData.length; index++) {
+      if (newData[index]['winner'] === 'Yale') {
+        counter += 1;
+      }
+      
+    }
+
+    if(counter >= 7) {
+      if ( winner !== 'Yale') setWinner("Yale");
+
+    } else if (winner !== 'Harvard') {
+      setWinner("Harvard");
+    }
 
 
 
 
     return newData;
   }
-
-
+  console.log(winner);
   return (
     <div 
         className="ag-theme-balham weather-grid"
@@ -126,6 +143,14 @@ function WeatherGrid(props) {
           modules={AllCommunityModules}
           onGridReady={onGridReady}>
         </AgGridReact>
+        { winner !== "nobody" && 
+        <div
+          className="winner-bar"
+        >
+          And the day winner is 
+          <section><img style={{width: 100, height: 100}}src={require(`./images/${winner}.png`)} alt='Failed to Load'/></section>
+        </div>
+        }
       </div>
   );
 }

@@ -37,6 +37,26 @@
   color: #09d3ac;
 }
 
+.college-card{
+  border: solid 3px black;
+}
+
+.footer{
+  width: 100vw;
+  font-size: 100%;
+  font-style: italic;
+  height: 50px;
+  position: absolute bottom;
+}
+
+.profile{
+    border-radius: 50%;
+    border: solid 3px white;
+    margin-left: 10vw;
+    /* margin-left: 110px ;
+    margin-right: 110px ; */
+    width: 125px;
+}
 .weather-header {
   border-style: solid;
   border-color: grey;
@@ -50,5 +70,18 @@
 }
 
 .navbar {
+  border-style: solid;
+  border-color: grey;
+  text-align: center;
   width: 100%;
 }
+
+.winner-bar {
+  display: flex;
+  /* background: red; */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+}
+
