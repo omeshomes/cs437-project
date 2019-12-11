@@ -126,6 +126,10 @@ function WeatherGrid(props) {
           modules={AllCommunityModules}
           onGridReady={onGridReady}>
         </AgGridReact>
+        <div>
+          And the winner is 
+          <section><img src={require(`./images/${"Yale"}.png`)} /></section>
+        </div>
       </div>
   );
 }
