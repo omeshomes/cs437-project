@@ -37,6 +37,23 @@
   color: #09d3ac;
 }
 
+.college-card{
+  border: solid 3px blue;
+}
+
+.footer{
+  width: 100rem;
+  font-size: 100%;
+  font-style: italic;
+}
+
+.profile{
+    border-radius: 50%;
+    border: solid 3px white;
+    margin-left: 110px ;
+    margin-right: 110px ;
+    width: 125px;
+}
 .weather-header {
   border-style: solid;
   border-color: grey;
@@ -50,5 +67,9 @@
 }
 
 .navbar {
+  border-style: solid;
+  border-color: grey;
+  text-align: center;
   width: 100%;
 }
+
