@@ -132,7 +132,6 @@ function WeatherGrid(props) {
 
     return newData;
   }
-  console.log(winner);
   return (
     <div 
         className="ag-theme-balham weather-grid"

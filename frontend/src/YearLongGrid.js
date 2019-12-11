@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryChart } from 'victory';
+import { VictoryChart, VictoryLabel } from 'victory';
 import { VictoryArea, VictoryTheme, VictoryAxis, VictoryLine } from 'victory';
 
 
@@ -32,10 +32,12 @@ function YearLongGrid(props) {
     <VictoryLine
         style={{
           data: { stroke: "red" },
-          parent: { border: "1px solid #ccc"}
+          parent: { border: "1px solid #ccc"},
         }}
         data={transData(winnerData['Harvard'])}
       />
+      <VictoryLabel text={'Days won by Yale (blue) or Harvard (red)'} x={50} y={25}/>
+      <VictoryLabel text={'cumulatively over the year'} x={50} y={40}/>
     </VictoryChart>
 
     )
