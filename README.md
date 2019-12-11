@@ -1,15 +1,34 @@
 # Weather Wars: Harvard v. Yale
 
-## To run backend
 
-First populate the database:
+
+## Requirements
+
+pipenv
+postgresql
+npm
+
+## Prerequisites
+
+Make sure that there is a database named cs437 running before running any of the following commands
+
+## To load data into  backend
+
 ```
-pipenv install
-pipenv run python -m server.populate_db
+npm run load-data
 ```
 
-Then run the server:
+
+## To setup frontend
+
+Install dependencies using npm:
 ```
-export FLASK_APP=server/app.py
-pipenv run python -m flask run
-``` 
+npm install
+```
+
+## To start the app
+
+Run the following command:
+```
+npm start
+```
