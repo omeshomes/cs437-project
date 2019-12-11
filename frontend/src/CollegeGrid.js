@@ -6,19 +6,29 @@ import Col from 'react-bootstrap/Col';
 //import Parent from './ExampleParent.js';
 
 function CollegeGrid(props) {
+
+    const item = [];
+    for(let i = 0; i < props.collegeData.length; i++)
+    {
+        item.push(<div>
+            <Col>
+                <College
+                data = {props.collegeData[i]}
+                />
+            </Col>
+            </div>);
+    }
     return (
-        <div class= "C">
-            
+        <div>
             <h1>Colleges in Database </h1>
-            {/* how to include data here that will be passed down (aka loop through records) */}
             <Container>
                 <Row>
-                    <Col xs> <College/> </Col>
-                    <Col xs={{ order: 12 }}> <College/> Second, but last</Col>
-                    <Col xs={{ order: 1 }}>  <College/> Third, but second</Col>
+                {item}
+                {/* <Col>Col 1</Col>
+                <Col>Col 2</Col> */}
+                {/* <Col>Col 2</Col> */}
                 </Row>
             </Container>
-           
         </div>
         
     );
