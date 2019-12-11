@@ -1,7 +1,7 @@
 .App {
   display: flex;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 900px;
   height: 100%;
@@ -46,7 +46,8 @@
   font-size: 100%;
   font-style: italic;
   height: 50px;
-  position: absolute bottom;
+  /*position: absolute;*/
+  /*bottom: 0;*/
 }
 
 .profile{
@@ -85,3 +86,19 @@
   font-size: xx-large;
 }
 
+.navbar.header {
+  border-width: 0;
+  /*background-color: #00356B;*/
+
+}
+
+.navbar-brand {
+  color: blue;
+}
+
+.toggle-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  align-self: flex-start;
+  flex: 1;
+}

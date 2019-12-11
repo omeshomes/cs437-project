@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar'
 import  WeatherGrid from './WeatherGrid';
 import WeatherHeader from './WeatherHeader';
 import YearLongGrid from './YearLongGrid';
@@ -20,27 +21,44 @@ function App() {
   const [collegesVisible, setCollegesVisible] = useState(false);
 
   const dummyColleges = [
-    {name: 'Yale', imageAddress: './Yale.png'},
-    {name: 'Harvard', imageAddress: './Harvard.png'},
+    {name: 'Yale', imageAddress: '/images/Yale.png'},
+    {name: 'Harvard', imageAddress: '/images/Harvard.png'},
   ];
   console.log(yearLongData);
   return (
     <div className='App-outside'>
+      <Navbar bg="dark"  variant="dark" className="header">
+          <Navbar.Brand href="#home">
+            {/*<img*/}
+            {/*  alt=""*/}
+            {/*  src="/logo.svg"*/}
+            {/*  width="30"*/}
+            {/*  height="30"*/}
+            {/*  className="d-inline-block align-top"*/}
+            {/*/>{' '}*/}
+            College Weather Wars
+          </Navbar.Brand>
+        </Navbar>
       <div 
         className='App'
         >
-          <Button class = "Toggle" onClick={() => setCollegesVisible(!collegesVisible)}> Toggle </Button>
-          {collegesVisible && <CollegeGrid 
-          collegeData={dummyColleges}
-        />}
+        <div className="toggle-container">
+          <Button onClick={() => setCollegesVisible(!collegesVisible)}>See Current Colleges</Button>
+            {collegesVisible && <CollegeGrid
+            collegeData={dummyColleges}
+          />}
+        </div>
+
+
         
         <WeatherHeader setWeatherData={setWeatherData} setYearLongData={setYearLongData}/>
         <WeatherGrid data={weatherData} />
         <YearLongGrid 
           winnerData={yearLongData}
         />
-        <Footer/>
+
       </div>
+      <Footer/>
     </div>
   );
 }

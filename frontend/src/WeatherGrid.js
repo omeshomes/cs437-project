@@ -148,7 +148,7 @@ function WeatherGrid(props) {
           className="winner-bar"
         >
           And the day winner is 
-          <section><img style={{width: 100, height: 100}}src={require(`./images/${winner}.png`)} alt='Failed to Load'/></section>
+          <section><img style={{width: 100, height: 100}}src={`/images/${winner}.png`} alt='Failed to Load'/></section>
         </div>
         }
       </div>

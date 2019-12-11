@@ -1,7 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import * as V from 'victory';
-import { VictoryBar } from 'victory';
 import { VictoryChart } from 'victory';
 import { VictoryArea, VictoryTheme, VictoryAxis, VictoryLine } from 'victory';
 
