@@ -7,9 +7,9 @@ import FormControl from 'react-bootstrap/FormControl';
 //import './App.css';
 
 function WeatherHeader(props) {
-    const [year,setYear] = useState(null);
-    const [month,setMonth] = useState(null);
-    const [day,setDay] = useState(null);
+    const [year,setYear] = useState('2010');
+    const [month,setMonth] = useState('January');
+    const [day,setDay] = useState('1');
 
     const monthToInt = {
         "January": "01",
