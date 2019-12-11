@@ -8,9 +8,6 @@ import YearLongGrid from './YearLongGrid';
 import CollegeGrid from './CollegeGrid';
 import Footer from './Footer.js';
 
-//git commit -m "name of commit"
-// why are we not using class instead?
-// where is render?
 function App() {
   const [weatherData, setWeatherData] = useState({})
 
