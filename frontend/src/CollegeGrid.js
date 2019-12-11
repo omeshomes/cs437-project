@@ -3,10 +3,12 @@ import College from './CollegeCard';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+//import Parent from './ExampleParent.js';
 
 function CollegeGrid(props) {
     return (
         <div class= "C">
+            
             <h1>Colleges in Database </h1>
             {/* how to include data here that will be passed down (aka loop through records) */}
             <Container>
