@@ -13,15 +13,22 @@ function App() {
   const dummytable = [];
 
   for (let i = 1; i < 366; i++) {
-    dummytable.push({day: i,school: (i % 3 === 0 ) ? "Havard" : "Yale"});
+    dummytable.push({day: i,school: (i % 3 === 0 ) ? "Harvard" : "Yale"});
   } 
+
+  const dummyColleges = [
+    {name: 'Yale', imageAddress: '/Yale.png'},
+    {name: 'Harvard', imageAddress: '/Harvard.png'},
+  ];
 
   return (
     <div className='App-outside'>
       <div 
         className='App'
         >
-        <CollegeGrid />
+        <CollegeGrid 
+          collegeData={dummyColleges}
+        />
         <WeatherHeader setWeatherData={setWeatherData}/>
         <WeatherGrid data={weatherData} />
         <YearLongGrid 
