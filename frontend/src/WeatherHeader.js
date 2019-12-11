@@ -41,9 +41,15 @@ function WeatherHeader(props) {
             const resObject = await response.json();
             console.log('response json', resObject)
             props.setWeatherData(resObject)
+
+            const response2 = await fetch(`http://127.0.0.1:5000/year-weather/${year}-${monthToInt[month]}-${day}`);
+            const resObject2 = await response2.json();
+            console.log('response json', resObject2)
+            props.setYearLongData(resObject2)
         } catch (e) {
             console.log("Got error: ",  e);
         }
+
     }
 
     return (

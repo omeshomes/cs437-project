@@ -9,8 +9,10 @@ import { VictoryArea, VictoryTheme, VictoryAxis, VictoryLine } from 'victory';
 function YearLongGrid(props) {
 	const {winnerData} = props;
     // increment yale by one if winnerData[i].school == Yale for that day, else increment Harvard
-    const item = [];
     const transData = (data) => {
+      //console.log(data);
+      if (data === null || data === undefined  ) return [];
+
         let newArr = [];
         for (let i = 0; i < data.length; i++) {
             newArr.push({x: i, y: data[i]});
@@ -18,9 +20,6 @@ function YearLongGrid(props) {
         return newArr;
     }
 
-    for (let i = 1; i < 10; i++) {
-        item.push(<div> day num: {winnerData[i].day} winner: {winnerData[i].school}</div>);
-    }
 
     return (
         <VictoryChart

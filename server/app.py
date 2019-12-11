@@ -32,6 +32,9 @@ def create_app():
         temp_variations = ["max_temp", "min_temp"]
         weather = ["has_fog", "has_heavy_fog", "has_smoke", "has_thunder", "peak_gust_time"]
         for attr in numerical_bad:
+            if y_day[attr] == "None" or h_day[attr] == "None":
+                break
+
             if float(y_day[attr]) <= float(h_day[attr]):
                 y_score += 1
             else:
@@ -47,6 +50,9 @@ def create_app():
                 h_score += 1
 
         for attr in weather:
+            if y_day[attr] == "None" or h_day[attr] == "None":
+                break
+
             if not y_day[attr] and h_day[attr]:
                 y_score += 1
             elif y_day[attr] and not h_day[attr]:
@@ -67,6 +73,7 @@ def create_app():
         yale_scores = [0]
         h_count = harvard_list.count()
         y_count = yale_list.count()
+        print('here', h_count, y_count)
         for i in range(min(h_count, y_count)):
             h_day = harvard_list[i]
             y_day = yale_list[i]

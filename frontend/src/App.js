@@ -10,8 +10,10 @@ import CollegeGrid from './CollegeGrid';
 import Footer from './Footer.js';
 
 function App() {
-  const [weatherData, setWeatherData] = useState({})
+  const [weatherData, setWeatherData] = useState({});
+  const [yearLongData, setYearLongData] = useState([]);
   const dummytable = [];
+  
   for (let i = 1; i < 366; i++) {
     dummytable.push({day: i,school: (i % 3 === 0 ) ? "Harvard" : "Yale"});
   } 
@@ -21,7 +23,7 @@ function App() {
     {name: 'Yale', imageAddress: './Yale.png'},
     {name: 'Harvard', imageAddress: './Harvard.png'},
   ];
-
+  console.log(yearLongData);
   return (
     <div className='App-outside'>
       <div 
@@ -32,10 +34,10 @@ function App() {
           collegeData={dummyColleges}
         />}
         
-        <WeatherHeader setWeatherData={setWeatherData}/>
+        <WeatherHeader setWeatherData={setWeatherData} setYearLongData={setYearLongData}/>
         <WeatherGrid data={weatherData} />
         <YearLongGrid 
-          winnerData={dummytable}
+          winnerData={yearLongData}
         />
         <Footer/>
       </div>
