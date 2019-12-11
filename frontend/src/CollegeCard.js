@@ -2,7 +2,6 @@
 
 import React, {useState} from 'react';
 import Card from 'react-bootstrap/Card';
-import logo from './images/Yale.png';
 
 function CollegeCard(props) {
     return (
