@@ -8,11 +8,11 @@ function CollegeCard(props) {
     return (
         <div class = "college-card">
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src= {logo} />
+            <Card.Img variant="top" src= {props.data.imageAddress} />
             <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{props.data.name}</Card.Title>
             <Card.Text>
-            Sample Text for school: {}
+            A rather presitigous school
             </Card.Text>
             </Card.Body>
         </Card>
